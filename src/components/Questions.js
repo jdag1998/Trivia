@@ -1,22 +1,21 @@
-export default function Questions ({question}) {
+export default function Question ({question}) {
     
-    function    questionLoading() {
+    function loadingQuestion () {
         return(
             <>
             <h1>Loading Question...</h1>
             </>
         )
     }
-    function questionLoaded() {
+    function loadedQuestion() {
         return(
             <>
             <h2> <span>Catergory:</span> {question.category.title.toString()}</h2>
-            <h2> <span>Points:</span> {question.points}</h2>
+            <h2> <span>Value:</span> {question.value}</h2>
             <h1> <span>Answer:</span> {question.question} </h1>
             </>
         )  
     }
     
-    return question ? questionLoaded() : questionLoading()
+    return question ? loadedQuestion() : loadingQuestion()
 }
-

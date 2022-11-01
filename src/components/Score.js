@@ -3,13 +3,13 @@ import {useState} from 'react'
 export default function Score ({question}) {
     const [score , setScore] = useState(0)
     function increaseScore() {
-        setScore(score + question.points)
+        setScore(score + question.value)
     }
     function decreaseScore() {
-        if (score - question.points <= 0){
+        if (score - question.value <= 0){
           setScore(0)  
         } else {
-            setScore(score - question.points)
+            setScore(score - question.value)
         }
         
     }

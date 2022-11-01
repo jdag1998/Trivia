@@ -1,18 +1,17 @@
-
 import './App.css';
 import {useState, useEffect} from 'react';
 
+import Question from './components/Questions';
 import Score from './components/Score';
 import Home from './components/Home';
-import Questions from './components/Questions';
 
 function App() {
-  
-  let [quest, setQuest] = useState('')
-  let [ans, setAns] = useState('')
+
+  let [question,setQuest] = useState('')
+  let [answer , setAns] = useState('')
   
 
-  const handleQuestion = async () => {
+  const showQuestion = async () => {
     const response = await fetch('http://jservice.io/api/random')
     const data = await response.json()
 
@@ -30,22 +29,19 @@ function App() {
     })
   }, [])
  
-  function handleAnswer () {
-    setAns(quest.ans)
+  function showAnswer () {
+    setAns(question.answer)
   }
 
   return (
     <div className="App">
-       
-      <Home/>
-      <Score quest={quest}/>
+      <Home />
+      <Score question={question}/>
       <h2>Let's Play!</h2>
-      <button onClick={handleQuestion}>Get Question</button>
-      <Questions quest={quest}/>
-      <button onClick={handleAnswer}>Show Answer</button>
-      <h1>{ans}</h1>
-    
-      
+      <button onClick={showQuestion}>Get Question</button>
+      <Question question={question}/>
+      <button onClick={showAnswer}>Show Answer</button>
+      <h1>{answer}</h1>
     </div>
   );
 }
